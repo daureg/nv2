@@ -38,7 +38,7 @@ txt:
 	sh nv2plain.sh $(NAME).nv
 
 clean:
-	rm -f *.aux *.toc *.log full.* tmp .__* *~
+	rm -f *.aux *.toc *.log full.* tmp .__* *~ *.~ config/*~ config/*.aux
 
 distclean: clean
 	rm -f *.pdf *.htm *.txt *.php *.xhtml
