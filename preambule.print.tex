@@ -1,0 +1,13 @@
+\input{preambule.common}
+\usepackage{xltxtra, xunicode}
+\usepackage{fontspec}
+\setromanfont{Gentium}
+\chardef\emdash="2014
+\chardef\endash="2013
+\newcommand{\tiret}{\endash\hspace{1mm}}
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{\small{\thepage}}
+\renewcommand{\headrulewidth}{0.0pt}
+\pagestyle{fancy}
+\include{config/post.print}

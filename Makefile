@@ -23,6 +23,12 @@ xetex: pdf
 	# Run twice to make sur that the TOC is complete.
 	# xelatex xetex.tex
 
+print: pdf
+	#latex print && bibtex print
+	xelatex print.tex
+	# Run twice to make sur that the TOC is complete.
+	# xelatex print.tex
+
 latex: pdf
 	#latex latex && bibtex latex
 	pdflatex latex.tex
