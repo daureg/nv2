@@ -1,0 +1,14 @@
+*.html
+*.txt
+*.nv
+texte.tex
+tmp
+*.xhtml
+*.php
+*.aux
+*.log
+*.toc
+.__*
+*.pdf
+*~
+file/clean.css

@@ -1,0 +1,11 @@
+Convertit les fichiers .nv en texte formaté, texte brut, latex, html
+
+_{0,1,2} [text]     différents niveaux de titres
+_                   saut de ligne
+__                  saut plus long
+*[text]|$           texte en emphase
+...                 convertit en … (PAS d'espace de part et d'autre)
+-[text]             ligne de dialogue, sans espace. À encadrer par des
+                    guillemets («») (sans espace)
+                    
+Ne pas oublier de remplir config/*

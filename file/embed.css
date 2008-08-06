@@ -1,0 +1,59 @@
+body {
+	margin: 2%;
+	font-family: sans-serif;
+	text-align: justify;
+	color : rgb(17,17,17);
+	background-color : rgb(255,250,245);
+	line-height : 150%;
+	word-spacing: 0.05em;
+	letter-spacing: 1px;
+}
+p {
+	text-indent: 5%;
+	margin: 2% 0%;
+}
+p:first-letter {
+	font: bold 1.5em serif;
+	color: rgb(80,80,80);
+	background-color: rgb(255,250,245);
+}
+p.dialogue:first-letter {
+	font: normal 1.0em sans-serif;
+	color: rgb(20,20,20);
+	background-color: rgb(255,250,245);
+}
+div.footer {
+	text-align: center;
+	font: 0.8em/1.2em sans-serif;
+	margin-top: 5%;
+	padding: 1%;
+	background-color: rgb(230,210,170);
+	color: rgb(17,17,17);
+	border: thin  outset black;
+}
+div.footer a {
+	background-color: rgb(230,210,170);
+	color: rgb(85,85,85);
+}
+div.valid {
+	margin:1%;
+}
+div.copyright {
+	font-style: italic;
+}
+h1.chapitre {
+	text-indent: 15%;
+	font: bold 2.0em/3.0em sans-serif;
+	margin: 5%;
+}
+h1.nouv {
+	text-align:center;
+	font: bold 1.5em/2.0em sans-serif;
+}
+h2.nouv {
+	font: bold 1.2em/1.7em sans-serif;
+}
+div.vertical-space {
+	margin-top: 15%;
+	margin-bottom: 15%;
+}
