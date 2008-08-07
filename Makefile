@@ -28,14 +28,14 @@ print: pdf
 	xelatex print.tex
 	# Run twice to make sur that the TOC is complete.
 	# xelatex print.tex
-	mv print.tex $(NAME)-print.pdf
+	mv print.pdf $(NAME)-print.pdf
 
 latex: pdf
 	#latex latex && bibtex latex
 	pdflatex latex.tex
 	# Run twice to make sur that the TOC is complete.
 	# pdflatex latex.tex
-	mv latex.tex $(NAME)-alternate.pdf
+	mv latex.pdf $(NAME)-alternate.pdf
 	
 pdf:
 	sh nv2tex.sh $(NAME).nv
