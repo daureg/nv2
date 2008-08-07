@@ -1,7 +1,6 @@
 #! /bin/bash
-DIR=`pwd`
-NAME=`basename $PWD`.nv
-python 80fmt.py 80 $NAME > tmp
+NAME=`basename $1`
+python 80fmt.py 80 $NAME.nv > tmp
 sed -i 's/^_$//' tmp
 sed -i 's/^__$/\n/' tmp
 sed -i 's/^_0/\tCHAPITRE :/' tmp
@@ -15,3 +14,4 @@ sed -i 's/«/« /g' tmp
 sed -i 's/»/ »/g' tmp
 sed -i 's/\.\.\./… /' tmp
 cat tmp
+rm tmp
