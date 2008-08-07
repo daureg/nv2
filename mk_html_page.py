@@ -11,6 +11,9 @@ if __name__ == "__main__":
 	# le nombre de sous repertoire en partant de la racine avant d'atteindre cet index.php
 	ROOT_LEVEL=sys.argv[5]
 	COMMON_STRING = int(ROOT_LEVEL) * "../" + "common/"
+	DATE = sys.argv[6]
+	if DATE == "today":
+	    DATE = os.popen("date +'%A %d %B %Y'").read().strip()
 	BEGIN = """<?php header("Vary: Accept");
 header("X-Hacker: It will be better for you to read Shakespeare than HTTP headers");
 if (stristr($_SERVER["HTTP_ACCEPT"], "application/xhtml+xml")) 
@@ -18,12 +21,12 @@ if (stristr($_SERVER["HTTP_ACCEPT"], "application/xhtml+xml"))
 else
     header("Content-Type: text/html; charset=utf-8");?>
 <?php include_once("%stitle"); ?>
-GeraudSoft | %s
+GeraudSoft | %s (%s)
 <?php include_once("%shead"); ?>
 <meta name="keywords" content="%s" />
 <meta name="description" content="%s" />
 <?php include_once("%sstart"); ?>
-"""%(COMMON_STRING, FULL_TITLE, COMMON_STRING, KEYWORD, DESC, COMMON_STRING)
+"""%(COMMON_STRING, FULL_TITLE, DATE, COMMON_STRING, KEYWORD, DESC, COMMON_STRING)
 	END = """<div class="vertical-space"></div>
 </div>
 <div class="footer">

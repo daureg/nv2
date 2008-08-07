@@ -1,7 +1,7 @@
 include config/info.mk
 
 all: html xetex txt
-	python mk_html_page.py $(FULL_TITLE) $(DESC) $(KEYWORD) $(NAME) $(ROOT_LEVEL) > index.php
+	python mk_html_page.py $(FULL_TITLE) $(DESC) $(KEYWORD) $(NAME) $(ROOT_LEVEL) $(DATE) > index.php
 	python mk_html_link.py $(FULL_TITLE) $(NAME) $(DESC) > link.htm
 
 html:
@@ -9,7 +9,7 @@ html:
 
 html_full: html
 	cat file/start.htm > full.htm
-	python mk_header.py $(FULL_TITLE) $(KEYWORD) $(DESC) >> full.htm
+	python mk_header.py $(FULL_TITLE) $(KEYWORD) $(DESC) $(DATE) >> full.htm
 	cat file/clean.css >> full.htm
 	cat file/body.htm >> full.htm
 	cat $(NAME).htm >> full.htm
