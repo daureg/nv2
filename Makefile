@@ -14,33 +14,35 @@ html_full: html
 	cat file/body.htm >> full.htm
 	cat $(NAME).htm >> full.htm
 	cat file/end.htm >> full.htm
-	fmt -w 768 full.htm > full.xhtml
+	mv full.htm $(NAME).xhtml
 
 xetex: pdf
 	#latex xetex && bibtex xetex
 	xelatex xetex.tex
-	mv xetex.pdf $(NAME).pdf
 	# Run twice to make sur that the TOC is complete.
 	# xelatex xetex.tex
+	mv xetex.pdf $(NAME).pdf
 
 print: pdf
 	#latex print && bibtex print
 	xelatex print.tex
 	# Run twice to make sur that the TOC is complete.
 	# xelatex print.tex
+	mv print.tex $(NAME)-print.pdf
 
 latex: pdf
 	#latex latex && bibtex latex
 	pdflatex latex.tex
 	# Run twice to make sur that the TOC is complete.
 	# pdflatex latex.tex
+	mv latex.tex $(NAME)-alternate.pdf
 	
 pdf:
 	sh nv2tex.sh $(NAME).nv
 
 txt:
 	python mk_title.py $(FULL_TITLE) ${DATE} > $(NAME).txt
-	sh nv2txt.sh >> $(NAME).txt
+	sh nv2txt.sh $(NAME) >> $(NAME).txt
 	sh nv2plain.sh $(NAME).nv
 
 clean:
@@ -49,10 +51,16 @@ clean:
 distclean: clean
 	rm -f *.pdf *.htm *.txt *.php *.xhtml
 	rm -f texte.tex
-	rm -f $(NAME)-$(VERSION).tar.bz2
+	rm -f $(NAME)-$(VERSION).tar.bz2 $(NAME)-src-$(VERSION).tar.bz2
 
-dist: pdf clean
+dist: xetex html_full txt clean
 	mkdir $(NAME)-$(VERSION)
-	cp *.{txt,htm,tex,php} $(NAME).pdf $(NAME)-$(VERSION)
+	cp *.txt $(NAME).xhtml *.pdf $(NAME)-$(VERSION)
 	tar -cjf $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION)
 	rm -rf $(NAME)-$(VERSION)
+
+src-dist: distclean
+	mkdir $(NAME)-src-$(VERSION)
+	cp -r *.nv 80fmt.py iso2htm.sed nv* mk* Makefile *.tex file/ config/ $(NAME)-src-$(VERSION)
+	tar -cjf $(NAME)-src-$(VERSION).tar.bz2 $(NAME)-src-$(VERSION)
+	rm -rf $(NAME)-src-$(VERSION)
