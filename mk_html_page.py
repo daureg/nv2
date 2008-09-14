@@ -14,20 +14,14 @@ if __name__ == "__main__":
 	DATE = sys.argv[6]
 	if DATE == "today":
 	    DATE = os.popen("date +'%A %d %B %Y'").read().strip()
-	BEGIN = """<?php header("Vary: Accept");
-header("X-Hacker: It will be better for you to read Shakespeare than HTTP headers");
-if (stristr($_SERVER["HTTP_ACCEPT"], "application/xhtml+xml")) 
-    header("Content-Type: application/xhtml+xml; charset=utf-8");
-else
-    header("Content-Type: text/html; charset=utf-8");?>
-<?php include_once("%stitle"); ?>
+	BEGIN = """ <?php include_once("%stitle"); ?>
 GeraudSoft | %s (%s)
 <?php include_once("%shead"); ?>
 <meta name="keywords" content="%s" />
 <meta name="description" content="%s" />
 <?php include_once("%sstart"); ?>
 """%(COMMON_STRING, FULL_TITLE, DATE, COMMON_STRING, KEYWORD, DESC, COMMON_STRING)
-	END = """<div class="vertical-space"></div>
+	END = """
 </div>
 <div class="footer">
 <?php
@@ -41,11 +35,10 @@ echo date(" d ", filemtime( $_SERVER['PATH_TRANSLATED'] ) );
 echo $mois[$nMois];
 echo date(" Y ", filemtime( $_SERVER['PATH_TRANSLATED'] ) );
 echo date(" à H\hi", filemtime( $_SERVER['PATH_TRANSLATED'] ) );
-echo "</div>\\n";
+echo "</div>\n";
 ?>
 <?php include_once("%send"); ?>
 """ % (COMMON_STRING)
 	f = open('%s.htm'%SHORT_NAME, 'r')
 	print BEGIN, f.read(), END
 	f.close
-
