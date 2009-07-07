@@ -39,6 +39,9 @@ latex: pdf
 	
 pdf:
 	sh nv2tex.sh $(NAME).nv
+	echo "\title{$(FULL_TITLE)}" > config/titre.tex
+	echo "\author{Géraud Le Falher}" >> config/titre.tex
+	echo "\date{$(DATE)}" >> config/titre.tex
 
 txt:
 	python mk_title.py $(FULL_TITLE) ${DATE} > $(NAME).txt
