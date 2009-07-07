@@ -5,7 +5,7 @@ sed 's/$/\n/' $NAME.nv > tmp
 sed -i 's/^__$/\\vspace{28pt}/' tmp
 sed -i 's/\.\.\./\\dots ~ /' tmp
 sed -i 's/«/\\og /g' tmp
-sed -i 's/»/\\fg/g' tmp
+sed -i 's/»/\\myfg/g' tmp
 sed -i 's/^-/\\tiret /' tmp
 #joindre les ligne \\
 sed -i 's/\*/\\emph\{/g' tmp
