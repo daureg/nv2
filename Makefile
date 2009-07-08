@@ -1,4 +1,5 @@
 include config/info.mk
+SAVE=$(NAME)-`date +"%Y%m%d"`
 
 all: html xetex txt
 	python mk_html_page.py $(FULL_TITLE) $(DESC) $(KEYWORD) $(NAME) $(ROOT_LEVEL) $(DATE) > index.php
@@ -54,7 +55,7 @@ clean:
 distclean: clean
 	rm -f *.pdf *.htm *.txt *.php *.xhtml
 	rm -f texte.tex
-	rm -f $(NAME)-$(VERSION).tar.bz2 $(NAME)-src-$(VERSION).tar.bz2
+	rm -f $(NAME)-$(VERSION).tar.bz2 $(NAME)-src-$(VERSION).tar.bz2 $(SAVE).tar.bz2
 
 dist: xetex html_full txt clean
 	mkdir $(NAME)-$(VERSION)
@@ -67,3 +68,9 @@ src-dist: distclean
 	cp -r *.nv 80fmt.py iso2htm.sed nv* mk* Makefile *.tex file/ config/ $(NAME)-src-$(VERSION)
 	tar -cjf $(NAME)-src-$(VERSION).tar.bz2 $(NAME)-src-$(VERSION)
 	rm -rf $(NAME)-src-$(VERSION)
+
+save:
+	mkdir $(SAVE)
+	cp $(NAME).nv config/info.mk $(SAVE)
+	tar -cjf $(SAVE).tar.bz2 $(SAVE)
+	rm -rf $(SAVE)
