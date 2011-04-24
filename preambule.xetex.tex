@@ -1,9 +1,15 @@
 \input{preambule.common}
 \XeTeXdefaultencoding utf-8
-\usepackage{xltxtra, xunicode, fontspec}
-\setmainfont{GentiumBookBasic}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\usepackage{xltxtra}
+\setmainfont{Linux Libertine O}
+\fontspec[Ligatures={Common}]{Linux Libertine O}
+\fontspec[Numbers={OldStyle}]{Linux Libertine O}
 \chardef\emdash="2014
 \chardef\endash="2013
 \newcommand{\tiret}{\endash~}
+\newcommand{\og}{«~}
+\newcommand{\fg}{~»}
 \rfoot{\small{\thepage}}
 \include{config/post.xetex}

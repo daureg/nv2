@@ -1,9 +1,15 @@
 \input{preambule.common}
-\usepackage{xltxtra, xunicode}
-\usepackage{fontspec}
-\setromanfont{Gentium}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\XeTeXdefaultencoding utf-8
+\usepackage{xltxtra}
+\setmainfont{Linux Libertine O}
+\fontspec[Ligatures={Common}]{Linux Libertine O}
+\fontspec[Numbers={OldStyle}]{Linux Libertine O}
 \chardef\emdash="2014
 \chardef\endash="2013
+\newcommand{\og}{«~}
+\newcommand{\fg}{~»}
 \newcommand{\tiret}{\endash\hspace{1mm}}
 \fancyhead{} % clear all header fields
 \fancyfoot{} % clear all footer fields
