@@ -1,6 +1,7 @@
 #! /bin/bash
 NAME=`basename $1`
-python 80fmt.py 80 $NAME.nv > tmp
+PYTHON=python2
+$PYTHON 80fmt.py 80 $NAME.nv > tmp
 sed -i 's/^_$//' tmp
 sed -i 's/^__$/\n/' tmp
 sed -i 's/^_0/\tCHAPITRE :/' tmp

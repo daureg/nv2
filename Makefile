@@ -1,16 +1,17 @@
 include config/info.mk
 SAVE=$(NAME)-`date +"%Y%m%d"`
+PYTHON	=	python2
 
 all: html xetex txt
-	python mk_html_page.py $(FULL_TITLE) $(DESC) $(KEYWORD) $(NAME) $(ROOT_LEVEL) $(DATE) > index.php
-	python mk_html_link.py $(FULL_TITLE) $(NAME) $(DESC) > link.htm
+	$(PYTHON) mk_html_page.py $(FULL_TITLE) $(DESC) $(KEYWORD) $(NAME) $(ROOT_LEVEL) $(DATE) > index.php
+	$(PYTHON) mk_html_link.py $(FULL_TITLE) $(NAME) $(DESC) > link.htm
 
 html:
 	sh nv2htm.sh $(NAME).nv
 
 html_full: html
 	cat file/start.htm > full.htm
-	python mk_header.py $(FULL_TITLE) $(KEYWORD) $(DESC) $(DATE) >> full.htm
+	$(PYTHON) mk_header.py $(FULL_TITLE) $(KEYWORD) $(DESC) $(DATE) >> full.htm
 	cat file/clean.css >> full.htm
 	cat file/body.htm >> full.htm
 	cat $(NAME).htm >> full.htm
@@ -45,12 +46,12 @@ pdf:
 	echo "\date{$(DATE)}" >> config/titre.tex
 
 txt:
-	python mk_title.py $(FULL_TITLE) ${DATE} > $(NAME).txt
+	$(PYTHON) mk_title.py $(FULL_TITLE) ${DATE} > $(NAME).txt
 	sh nv2txt.sh $(NAME) >> $(NAME).txt
 	sh nv2plain.sh $(NAME).nv
 
 clean:
-	rm -f *.aux *.toc *.log full.* tmp .__* *~ *.~ config/*~ config/*.aux
+	rm -f *.aux *.toc *.log full.* tmp .__* *~ *.~ config/*~ config/*.aux config/titre.tex
 
 distclean: clean
 	rm -f *.pdf *.htm *.txt *.php *.xhtml
