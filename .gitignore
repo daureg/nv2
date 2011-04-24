@@ -12,3 +12,4 @@ tmp
 *.pdf
 *~
 file/clean.css
+config/titre.tex
