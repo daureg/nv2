@@ -1,8 +1,8 @@
 NAME			=	example
-FULL_TITLE		=	"Demonstration"
+FULL_TITLE		=	"Démonstration"
 DESC			=	"Un test d'une nouvelle"
 KEYWORD			=	"nouvelle,test"
 DATE            	=   	"today"
 ROOT_LEVEL		=	"2"
-PDF_VIEWER		=	evince
-VERSION			=	0.0.1
+PDF_VIEWER		=	epdfview
+VERSION			=	0.1
