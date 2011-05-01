@@ -14,6 +14,7 @@ html_full: html
 	$(PYTHON) mk_header.py $(FULL_TITLE) $(KEYWORD) $(DESC) $(DATE) >> full.htm
 	cat file/clean.css >> full.htm
 	cat file/body.htm >> full.htm
+	printf '<h1 style="text-align:center;margin-bottom:3em;">%s</h1>' $(FULL_TITLE) >> full.htm
 	cat $(NAME).htm >> full.htm
 	cat file/end.htm >> full.htm
 	mv full.htm $(NAME).xhtml
