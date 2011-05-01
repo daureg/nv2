@@ -1,6 +1,11 @@
 include config/info.mk
 SAVE=$(NAME)-`date +"%Y%m%d"`
 PYTHON	=	python2
+ifeq ($(FINI), 1)
+	TEXFILE=print
+else
+	TEXFILE=print_pas_fini
+endif
 
 all: html xetex txt
 	$(PYTHON) mk_html_page.py $(FULL_TITLE) $(DESC) $(KEYWORD) $(NAME) $(ROOT_LEVEL) $(DATE) > index.php
@@ -28,10 +33,17 @@ xetex: pdf
 
 print: pdf
 	#latex print && bibtex print
-	xelatex print.tex
+ifneq ($(FINI), 1)
+	echo "\begin{center} \emph{" $(FULL_TITLE) "\\\\" $(DATE)"}\\\\\end{center}" > tmp
+else
+	echo "" > tmp
+endif
+	cat texte.tex >> tmp
+	@mv tmp texte.tex
+	xelatex $(TEXFILE).tex
 	# Run twice to make sur that the TOC is complete.
 	# xelatex print.tex
-	mv print.pdf $(NAME)-print.pdf
+	mv $(TEXFILE).pdf $(NAME)-print.pdf
 
 latex: pdf
 	#latex latex && bibtex latex
