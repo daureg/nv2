@@ -3,7 +3,7 @@
 """Make header of a html page"""
 import sys, os
 if __name__ == "__main__":
-    FULL_TITLE = sys.argv[1]
+    FULL_TITLE = sys.argv[1].replace("\\","")
     KEYWORD = sys.argv[2]
     DESC = sys.argv[3]
     DATE = sys.argv[4]
